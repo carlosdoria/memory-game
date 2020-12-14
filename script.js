@@ -1,4 +1,5 @@
 const cards = document.querySelectorAll('.card');
+const resetButton = document.getElementById('reset-game');
 
 let firstCard, secondCard;
 let hasFlippedCard = false;
@@ -52,14 +53,30 @@ function resetBoard () {
   [firstCard, secondCard] = [null, null];
 };
 
-(function shuffle () {
+function shuffle () {
   cards.forEach (card => {
     let randomPosition = Math.floor(Math.random() * 12);
 
     card.style.order = randomPosition;
   })
-})();
+};
+
+shuffle()
+
+function resetGame () {
+  lockBoard = true;
+  cards.forEach (card => {
+    card.classList.remove('flip');
+  })
+  setTimeout(() => {
+    resetBoard();
+    shuffle();
+    alert('As cartas foram embaralhadas!')
+  }, 1500)
+}
 
 cards.forEach(card => {
   card.addEventListener('click', flipCard)
 });
+
+resetButton.addEventListener('click', resetGame)

@@ -8,15 +8,34 @@ body {
   height: 100vh;
 
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background-color: rgb(54, 189, 189);
+}
+
+.div-game {
+  width: 100%;
+
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: center;
+}
+
+#reset-game {
+  height: 100px;
+  width: 640px;
+
+  font-size: 2.4rem;
 }
 
 .memory-game {
   height: 640px;
   width: 640px;
 
-  margin: auto;
+  margin: 0 auto;
 
   display: flex;
   flex-wrap: wrap;
