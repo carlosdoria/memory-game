@@ -1,52 +1,57 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
+  height: 100vh;
 
-    display: flex;
+  display: flex;
 
-    background-color: rgb(54, 189, 189);
+  background-color: rgb(54, 189, 189);
 }
 
 .memory-game {
-    height: 640px;
-    width: 640px;
+  height: 640px;
+  width: 640px;
 
-    margin: auto;
-    
-    display: flex;
-    flex-wrap: wrap;
+  margin: auto;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-    position: relative;
+  position: relative;
 
-    height: calc( 33.333% - 10px);
-    width: calc(25% - 10px);
-    
-    margin: 5px;
-    
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  height: calc( 33.333% - 10px);
+  width: calc(25% - 10px);
 
-    cursor: pointer;
+  margin: 5px;
 
-    transform: scale(1);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+
+  cursor: pointer;
+
+  transform: scale(1);
 }
 
 .card-front,
 .card-back {
-    position: absolute;
-    
-    height: 100%;
-    width: 100%;
+  position: absolute;
 
-    padding: 20px;
-    
-    border-radius: 5px;
-    
-    background: #fff;
+  height: 100%;
+  width: 100%;
+
+  padding: 20px;
+
+  border-radius: 5px;
+
+  background: #fff;
+}
+
+.card:active {
+  transform: scale(0.97);
+  transition: transform .3s;
 }
