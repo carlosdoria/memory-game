@@ -20,6 +20,8 @@ body {
 
   display: flex;
   flex-wrap: wrap;
+
+  perspective: 1000px;
 }
 
 .card {
@@ -35,6 +37,8 @@ body {
   cursor: pointer;
 
   transform: scale(1);
+  transform-style: preserve-3d; /* don't leave the element flat on the plane */
+  transition: transform .9s;
 }
 
 .card-front,
@@ -49,9 +53,20 @@ body {
   border-radius: 5px;
 
   background: #fff;
+
+  backface-visibility: hidden;
 }
 
 .card:active {
   transform: scale(0.97);
   transition: transform .3s;
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+
 }
