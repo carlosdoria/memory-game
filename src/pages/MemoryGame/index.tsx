@@ -1,87 +1,82 @@
+import { useState } from 'react'
 import Link from 'next/link'
 // import Image from 'next/image'
 import { GoArrowLeft } from 'react-icons/go'
 import { Card } from '../../components'
 import * as S from './styles'
 
+interface ICard {
+  name: string
+  isActive: boolean
+}
+
 const MemoryGame = () => {
 
-  // const cards = document.querySelectorAll( '.card' )
+  const [ cards, setCards ] = useState<ICard[]>( [
+    { name: 'luigi', isActive: false },
+    { name: 'luigi', isActive: false },
+    { name: 'bowser', isActive: false },
+    { name: 'mario', isActive: false },
+    { name: 'peach', isActive: false },
+    { name: 'toad', isActive: false },
+    { name: 'yoshi', isActive: false },
+    { name: 'bowser', isActive: false },
+    { name: 'mario', isActive: false },
+    { name: 'peach', isActive: false },
+    { name: 'toad', isActive: false },
+    { name: 'yoshi', isActive: false },
+  ] )
 
-  // let firstCard, secondCard
-  // let hasFlippedCard = false
-  // let lockBoard = false
+  const [ hasFlippedCard, setHasFlippedCard ] = useState( false )
+  const [ firstCard, setFirstCard ] = useState<ICard>( { name: '', isActive: false } )
+  const [ secondCard, setSecondCard ] = useState<ICard>( { name: '', isActive: false } )
 
-  // function checkForMath () {
-  //   if ( firstCard.dataset.card === secondCard.dataset.card ) {
-  //     disableCard()
-  //     return
-  //   }
+  function flipCard ( id: number, card: ICard ) {
+    setCards( [ ...cards ].map( ( obj, index ) => {
+      if ( id === index ) {
+        return {
+          ...obj,
+          isActive: true
+        }
+      } else return obj
+    } ) )
 
-  // function disableCard () {
-  //   firstCard.removeEventListener( click, flipCard )
-  //   secondCard.removeEventListener( click, flipCard )
+    if ( !hasFlippedCard ) {
+      setHasFlippedCard( true )
+      setFirstCard( card )
+      return
+    }
 
-  //   resetBoard()
-  // }
+    setSecondCard( card )
+    checkMacthCards( firstCard.name, secondCard.name )
 
-  // function unflipCard () {
-  //   lockBoard = true
-
-  //   setTimeout( () => {
-  //     firstCard.classList.remove( 'flip' )
-  //     secondCard.classList.remove( 'flip' )
-
-  //     resetBoard()
-  //   }, 1500 )
-  // }
-
-  // function resetBoard () {
-  //   [ hasFlippedCard, lockBoard ] = [ false, false ];
-  //   [ firstCard, secondCard ] = [ '', '' ]
-  // }
-
-  // function shuffle () {
-  //   cards.forEach ( card => {
-  //     const randomPosition = Math.floor( Math.random() * 12 )
-
-  //     card.style.order = randomPosition
-  //   } )
-  // }
-
-  // shuffle()
-
-  function resetGame () {
-    // lockBoard = true
-    // cards.forEach ( card => {
-    //   card.classList.remove( 'flip' )
-    // } )
-    // setTimeout( () => {
-    //   resetBoard()
-    //   shuffle()
-    //   alert( 'As cartas foram embaralhadas!' )
-    // }, 1500 )
   }
 
-  const CARDS = [
-    { name: 'luigi' },
-    { name: 'bowser' },
-    { name: 'mario' },
-    { name: 'peach' },
-    { name: 'toad' },
-    { name: 'yoshi' },
-    { name: 'bowser' },
-    { name: 'luigi' },
-    { name: 'mario' },
-    { name: 'peach' },
-    { name: 'toad' },
-    { name: 'yoshi' },
-  ]
+  function checkMacthCards ( firstCard: string, secondCard: string ) {
+    if ( firstCard === secondCard ){
+      console.log( 'etssd' )
+      // disableCards()
+      return
+    }
+    // unFlipCards()
+  }
+
+  function resetGame () {
+    setHasFlippedCard( false )
+    setFirstCard( { name: '', isActive: false } )
+    setSecondCard( { name: '', isActive: false } )
+    setCards( [ ...cards ].map( obj => {
+      return {
+        ...obj,
+        isActive: false
+      }
+    } ) )
+  }
 
   return (
     <>
       <S.Header>
-        <Link href='Home'>
+        <Link href='/Home'>
           <GoArrowLeft
             size={30}
           />
@@ -90,8 +85,8 @@ const MemoryGame = () => {
       </S.Header>
 
       <S.Board>
-        {CARDS.map( ( card, index ) => (
-          <Card key={index} name={card.name} />
+        {cards.map( ( card, index ) => (
+          <Card key={index} name={card.name} flipCard={() => flipCard( index, card )} isActive={card.isActive} />
         ) )}
       </S.Board>
 
