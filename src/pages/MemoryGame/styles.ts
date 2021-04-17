@@ -1,23 +1,5 @@
 import styled from 'styled-components'
 
-export const Header = styled.header`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* justify-content: center; */
-
-  p {
-    justify-self: center;
-  }
-
-  h1 {
-    display: flex;margin: auto;
-    justify-self: center;
-    font-size: 3rem;
-    color: blue;
-  }
-`
-
 export const Board = styled.main`
   height: 640px;
   width: 640px;

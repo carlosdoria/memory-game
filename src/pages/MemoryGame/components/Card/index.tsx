@@ -3,6 +3,7 @@ import * as S from './styles'
 interface IProps {
   name: string
   isActive: boolean
+  // isDisable: boolean
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   flipCard: () => any
 }

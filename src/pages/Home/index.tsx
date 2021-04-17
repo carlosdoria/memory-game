@@ -1,18 +1,16 @@
 import * as S from './styles'
-import Link from 'next/link'
+import { GameCard } from '../../components'
 
 const Home = ( { title = 'Lista de jogos' } ) => {
   return (
-    <S.Main>
-      <h1>{title}</h1>
-      <ol>
-        <li >
-          <Link href='MemoryGame'>
-            Jogo da Memória
-          </Link>
-        </li>
-      </ol>
-    </S.Main>
+    <>
+      <S.Title>{title}</S.Title>
+      <S.Main>
+
+        <GameCard name='Jogo da memória' path='MemoryGame'/>
+        <GameCard name='Jogo da Velha' path='TicTacToeGame'/>
+      </S.Main>
+    </>
   )
 }
 
