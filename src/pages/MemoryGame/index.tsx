@@ -145,17 +145,19 @@ const MemoryGame = () => {
     <>
       <Header title="Jogo da mémoria"/>
 
-      <S.Board>
-        {cards.map( ( card, index ) => (
-          <Card key={index} name={card.name} flipCard={() => flipCard( index, card )} isActive={card.isActive} />
-        ) )}
-      </S.Board>
+      <S.Container>
+        <S.Board>
+          {cards.map( ( card, index ) => (
+            <Card key={index} name={card.name} flipCard={() => flipCard( index, card )} isActive={card.isActive} />
+          ) )}
+        </S.Board>
 
-      <S.Reset>
-        <button onClick={resetGame}>Reset Game</button>
-        <button onClick={() => console.log( cards )}>Cards</button>
-        <button onClick={() => shuffleCards( )}>Console</button>
-      </S.Reset>
+        <S.Reset>
+          <button onClick={resetGame}>Reset Game</button>
+          <button onClick={() => console.log( cards )}>Cards</button>
+          <button onClick={() => shuffleCards( )}>Console</button>
+        </S.Reset>
+      </S.Container>
     </>
   )
 }

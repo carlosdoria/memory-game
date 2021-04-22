@@ -9,15 +9,15 @@ interface header {
 export const Header = ( { title }:header ) => {
   return (
     <S.Header>
-      <Link href='/Home'>
+      <Link href='/'>
         <S.LinkCustomized>
           <GoArrowLeft
             color='white'
-            size={40}
+            size={50}
           />
         </S.LinkCustomized>
       </Link>
-      <span>{title}</span>
+      <h2>{title}</h2>
     </S.Header>
   )
 }

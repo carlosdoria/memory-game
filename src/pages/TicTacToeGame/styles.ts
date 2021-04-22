@@ -21,11 +21,21 @@ export const Board = styled.div`
   width: 400px;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 600px) {
+    height: 300px;
+    width: 300px;
+  }
+
+  @media (max-width: 340px) {
+    height: 200px;
+    width: 200px;
+  }
 `
 
 export const Row = styled.div`
-  height: 133.3px;
-  width: 400px;
+  height: 33.33%;
+  width: 100%;
   margin: 0;
   padding: 0;
   line-height: 0;
@@ -61,9 +71,10 @@ export const Square = styled.button`
 
 export const Button = styled.button`
   margin-top: 3rem;
-  padding: 1.2rem 4rem;
+  padding: 1.2rem 2rem;
 
   font-size: 1.4rem;
+  letter-spacing: .2rem;
 
   color: #15f4ee;
   border: 2px solid #15f4ee;

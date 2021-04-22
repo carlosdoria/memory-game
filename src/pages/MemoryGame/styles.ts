@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-export const Board = styled.main`
+export const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const Board = styled.div`
   height: 640px;
   width: 640px;
 
@@ -13,6 +19,10 @@ export const Board = styled.main`
 
   .flip {
     transform: rotateY(180deg);
+  }
+  @media (max-width: 640px) {
+    height: 300px;
+    width: 300px;
   }
 `
 
